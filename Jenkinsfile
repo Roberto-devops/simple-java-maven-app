@@ -18,7 +18,14 @@ pipeline {
       }
     }
 
-    stage('Sonar analyze') {
+    stage('Test ') {
+      steps {
+        sh 'mvn test'
+        junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml', healthScaleFactor: 2)
+      }
+    }
+
+    stage('Sonar') {
       steps {
         sh '''mvn sonar:sonar \\
   -Dsonar.projectKey=test \\
