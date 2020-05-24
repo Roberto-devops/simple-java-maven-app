@@ -12,9 +12,9 @@ pipeline {
       }
     }
 
-    stage('error') {
+    stage('build') {
       steps {
-        sh 'cat jenkins/Jenkinsfile'
+        sh 'mvn -B -DskipTests clean package'
       }
     }
 
