@@ -8,11 +8,11 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git(url: 'https://github.com/Roberto-devops/simple-java-maven-app.gitz', branch: 'master', credentialsId: 'roberto-devops')
+        git(url: 'https://github.com/Roberto-devops/simple-java-maven-app.git', branch: 'master', credentialsId: 'roberto-devops')
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         sh 'cat jenkins/Jenkinsfile'
       }
