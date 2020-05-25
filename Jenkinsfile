@@ -27,7 +27,10 @@ pipeline {
 
     stage('Sonar') {
       steps {
-        sh 'mvn sonar:sonar -Dsonar.projectKey=test   -Dsonar.surefire.reportsPath=target/surefire-reports/*.xml'
+        withSonarQubeEnv(installationName: 'my_custom_sonar', credentialsId: 'sonar_token') {
+          sh 'mvn sonar:sonar -Dsonar.projectKey=test   -Dsonar.surefire.reportsPath=target/surefire-reports/*.xml'
+        }
+
       }
     }
 
